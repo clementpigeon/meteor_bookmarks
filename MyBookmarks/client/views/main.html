@@ -15,7 +15,11 @@
     {{#if newBookmark}}
       {{> afterBookmarkAdded newBookmark}}
     {{else}}
-      {{> addBookmarkButton}}
+      {{#if editedBookmark}}
+        {{> editingBookmark editedBookmark}}
+      {{else}}
+        {{> addBookmarkButton}}
+      {{/if}}
     {{/if}}
 
     {{> bookmarkList}}

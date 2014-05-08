@@ -12,5 +12,11 @@ Template.bookmarkItem.events({
     );
 
     Session.set('justDeletedId', this._id);
+  },
+
+  'click a#edit': function (e) {
+    e.preventDefault();
+
+    Session.set('editedBookmarkId', this._id);
   }
 })

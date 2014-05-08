@@ -8,23 +8,32 @@
 <template name="afterBookmarkAdded">
   <div class="alert alert-success">Bookmark successfully created!</div>
   <p>
-    You can edit the title and add a note below.
+    <b>You can edit the title and add a note below.</b>
     <button type="button" class="btn btn-default btn-xs" id='dismiss'>
       <span class="glyphicon glyphicon-remove"></span> No, thanks
     </button>
   </p>
 
-  {{> editBookmark}}
+  {{> editBookmarkForm}}
 
 </template>
 
-<template name="editBookmark">
+<template name="editingBookmark">
+  <p>
+    <b>Editing a bookmark.</b>
+  </p>
+
+  {{> editBookmarkForm}}
+
+</template>
+
+<template name="editBookmarkForm">
   <form>
     <div class="form-group">
       <input class="form-control" name="title" type="text" value="{{title}}" placeholder="Title for the bookmark"/>
     </div>
     <div class="form-group">
-      <textarea class="form-control" name="note" placeholder="Add a note for this bookmark..."></textarea>
+      <textarea class="form-control" name="note" placeholder="Add a note for this bookmark...">{{note}}</textarea>
     </div>
     <button id="save" type="submit" class="form-control btn btn-info"><span class="glyphicon glyphicon-ok"></span> Save</button>
   </form>

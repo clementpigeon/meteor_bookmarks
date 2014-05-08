@@ -22,14 +22,14 @@ Template.afterBookmarkAdded.events({
   }
 });
 
-Template.editBookmark.events({
+Template.editBookmarkForm.events({
   'submit form': function (e) {
     e.preventDefault();
     var title = $(e.target).find('[name=title]').val();
     var note = $(e.target).find('[name=note]').val();
 
     Bookmarks.update(
-      {"_id": Session.get('newBookmarkId')},
+      {"_id": this._id},
       {
         $set : {
           "title": title,
@@ -38,6 +38,7 @@ Template.editBookmark.events({
       }
     )
     Session.set('newBookmarkId', null);
+    Session.set('editedBookmarkId', null);
   }
 });
 
