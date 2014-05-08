@@ -1,16 +1,5 @@
 Template.main.bookmarks = function () {
-  return [
-    {
-      url: "http://www.google.com",
-      title: "Google",
-      note: "where it all begins"
-    },
-    {
-      url: "http://www.lemonde.fr",
-      title: "Le Monde.fr",
-      note: "Le news"
-    }
-  ];
+  return Bookmarks.find({});
 };
 
 Template.main.events({
