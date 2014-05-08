@@ -7,22 +7,27 @@
 </body>
 
 <template name="main">
-  {{#if currentUser}}
-    <input type="button" id='newBookmark' value="Bookmark current page" />
-    <h2>My Bookmarks</h2>
-    <ul class="bookmark-list">
-      {{#each bookmarks}}
-        {{> bookmark}}
-      {{/each}}
-    </ul>
+  <div class="main">
+    {{#if currentUser}}
+      <input type="button" class="btn btn-primary btn-block" id='newBookmark' value="Bookmark current page" />
+      <h3>My Bookmarks</h3>
+      <ul class="bookmark-list">
+        {{#each bookmarks}}
+          {{> bookmark}}
+        {{/each}}
+      </ul>
 
-  {{else}}
-    {{> loginButtons}}
-  {{/if}}
+    {{else}}
+      {{> loginButtons}}
+    {{/if}}
+  </div>
 </template>
 
 <template name="bookmark">
   <li class="bookmark-item">
-    <a target='_blank' href="{{url}}">{{title}}</a>
+    <div><a target='_blank' href="{{url}}">{{title}}</a></div>
+    {{#if note}}
+      <div class="note">{{note}}</div>
+    {{/if}}
   </li>
 </template>

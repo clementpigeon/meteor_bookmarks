@@ -1,1 +1,18 @@
-/* CSS declarations go here */
+.main {
+  margin: 10px;
+}
+
+ul {
+  list-style: square;
+  -webkit-padding-start: 10px;
+}
+
+.bookmark-item{
+  margin-top: 6px;
+}
+
+.note {
+  color: #bbb;
+  font-style: italic;
+  margin-left: 6px;
+}
