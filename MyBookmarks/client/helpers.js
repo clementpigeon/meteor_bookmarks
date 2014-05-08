@@ -1,6 +1,6 @@
 Meteor.subscribe('bookmarks', Meteor.userId());
 
-Template.main.bookmarks = function () {
+Template.bookmarkList.bookmarks = function () {
   return Bookmarks.find({});
 };
 

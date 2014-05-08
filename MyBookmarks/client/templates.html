@@ -3,31 +3,38 @@
 </head>
 
 <body>
-  {{> main}}
+  {{#if currentUser}}
+    {{> main}}
+  {{else}}
+    {{> loginButtons}}
+  {{/if}}
 </body>
 
 <template name="main">
   <div class="main">
-    {{#if currentUser}}
-      <input type="button" class="btn btn-primary btn-block" id='newBookmark' value="Bookmark current page" />
-      <h3>My Bookmarks</h3>
-      <ul class="bookmark-list">
-        {{#each bookmarks}}
-          {{> bookmark}}
-        {{/each}}
-      </ul>
-
-    {{else}}
-      {{> loginButtons}}
-    {{/if}}
+    {{> addBookmarkButton}}
+    {{> bookmarkList}}
   </div>
 </template>
 
-<template name="bookmark">
+<template name="bookmarkList">
+  <h3>My Bookmarks</h3>
+  <ul class="bookmark-list">
+    {{#each bookmarks}}
+      {{> bookmarkItem}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="bookmarkItem">
   <li class="bookmark-item">
     <div><a target='_blank' href="{{url}}">{{title}}</a></div>
     {{#if note}}
       <div class="note">{{note}}</div>
     {{/if}}
   </li>
+</template>
+
+<template name="addBookmarkButton">
+    <input type="button" class="btn btn-primary btn-block" id='newBookmark' value="Bookmark current page" />
 </template>
