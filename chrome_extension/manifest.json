@@ -2,8 +2,11 @@
   "name":"MyBookmarks",
   "version" : "0.1.0",
   "manifest_version": 2,
-  "description":"Chrome extension for social bookmarks",
+  "description":"Chrome extension for bookmarks",
   "browser_action": {
     "default_popup": "popup.html"
-  }
+  },
+  "permissions": [
+    "tabs"
+  ]
 }
