@@ -3,11 +3,26 @@
 </head>
 
 <body>
-  {{> hello}}
+  {{> main}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="main">
+  {{#if currentUser}}
+    <input type="button" id='newBookmark' value="Bookmark current page" />
+    <h2>My Bookmarks</h2>
+    <ul class="bookmark-list">
+      {{#each bookmarks}}
+        {{> bookmark}}
+      {{/each}}
+    </ul>
+
+  {{else}}
+    {{> loginButtons}}
+  {{/if}}
+</template>
+
+<template name="bookmark">
+  <li class="bookmark-item">
+    <a target='_blank' href="{{url}}">{{title}}</a>
+  </li>
 </template>

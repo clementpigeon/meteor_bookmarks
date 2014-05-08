@@ -1,13 +1,21 @@
-Template.hello.greeting = function () {
-  return "Welcome to MyBookmarks.";
+Template.main.bookmarks = function () {
+  return [
+    {
+      url: "http://www.google.com",
+      title: "Google",
+      note: "where it all begins"
+    },
+    {
+      url: "http://www.lemonde.fr",
+      title: "Le Monde.fr",
+      note: "Le news"
+    }
+  ];
 };
 
-Template.hello.events({
-  'click input': function () {
-    // template data, if any, is available in 'this'
-    if (typeof console !== 'undefined')
-      console.log("You pressed the button");
+Template.main.events({
+  'click input#newBookmark': function () {
+      var url = window.location.hash.slice(1);
+      console.log(url);
   }
 });
-
-
