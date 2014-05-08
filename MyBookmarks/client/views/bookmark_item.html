@@ -1,0 +1,20 @@
+<template name="bookmarkItem">
+  <li class="bookmark-item">
+    <div>
+      <a target='_blank' href="{{url}}">
+        {{title}}
+      </a>
+      <a id="remove" class="btn btn-xs btn-default remove-bookmark pull-right">
+        <span class="glyphicon glyphicon-remove"></span> Delete
+      </a>
+      <a id="edit" class="btn btn-xs btn-default remove-bookmark pull-right">
+        <span class="glyphicon glyphicon-edit"></span> Edit
+      </a>
+    </div>
+
+    {{#if note}}
+      <div class="note">{{note}}</div>
+    {{/if}}
+
+  </li>
+</template>

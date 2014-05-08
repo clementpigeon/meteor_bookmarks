@@ -1,0 +1,40 @@
+<template name="addBookmarkButton">
+    <button id='newBookmark' type="button" class="btn btn-primary btn-block">
+      <span class="glyphicon glyphicon-bookmark"></span> Bookmark current page
+    </button>
+</template>
+
+
+<template name="afterBookmarkAdded">
+  <div class="alert alert-success">Bookmark successfully created!</div>
+  <p>
+    You can edit the title and add a note below.
+    <button type="button" class="btn btn-default btn-xs" id='dismiss'>
+      <span class="glyphicon glyphicon-remove"></span> No, thanks
+    </button>
+  </p>
+
+  {{> editBookmark}}
+
+</template>
+
+<template name="editBookmark">
+  <form>
+    <div class="form-group">
+      <input class="form-control" name="title" type="text" value="{{title}}" placeholder="Title for the bookmark"/>
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" name="note" placeholder="Add a note for this bookmark..."></textarea>
+    </div>
+    <button id="save" type="submit" class="form-control btn btn-info"><span class="glyphicon glyphicon-ok"></span> Save</button>
+  </form>
+
+</template>
+
+<template name="undoDeleteForm">
+  <div class="alert alert-warning alert-dismissable pull-right">
+
+    <button type="button" class="close">&times;</button>
+    Bookmark deleted. <a id="undo-delete" class="alert-link">Undo?</a>
+  </div>
+</template>

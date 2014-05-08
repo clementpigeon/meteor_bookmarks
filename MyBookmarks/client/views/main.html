@@ -1,0 +1,23 @@
+<head>
+  <title>MyBookmarks</title>
+</head>
+
+<body>
+  {{#if currentUser}}
+    {{> main}}
+  {{else}}
+    {{> loginButtons}}
+  {{/if}}
+</body>
+
+<template name="main">
+  <div class="main">
+    {{#if newBookmark}}
+      {{> afterBookmarkAdded newBookmark}}
+    {{else}}
+      {{> addBookmarkButton}}
+    {{/if}}
+
+    {{> bookmarkList}}
+  </div>
+</template>

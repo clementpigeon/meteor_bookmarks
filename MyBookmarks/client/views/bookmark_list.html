@@ -1,0 +1,14 @@
+<template name="bookmarkList">
+  {{#if justDeleted}}
+    {{> undoDeleteForm}}
+  {{/if}}
+
+  <h3>My Bookmarks</h3>
+
+  <ul class="bookmark-list">
+    {{#each bookmarks}}
+      {{> bookmarkItem}}
+    {{/each}}
+  </ul>
+
+</template>
