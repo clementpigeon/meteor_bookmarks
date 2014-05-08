@@ -18,13 +18,17 @@ ul {
 }
 
 .alert-warning {
-  padding: 6px 30px 6px 10px;
+  padding: 6px 16px 6px 10px;
   margin: 14px 0 0 0;
 }
 .alert-warning a{
   text-decoration: underline;
   cursor: pointer;
 }
+.alert-dismissable .close {
+  right: -14px;
+}
+
 .mb_icon {
   display: inline-block;
   width: 38px;
