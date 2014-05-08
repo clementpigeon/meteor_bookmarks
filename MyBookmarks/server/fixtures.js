@@ -1,11 +1,11 @@
 if (Bookmarks.find({}).count() === 0) {
   var now = new Date().getTime();
 
-  var clemId = Meteor.users.insert({
-    profile: { name: "Clément Pigeon" }
+  var clemId = Accounts.createUser({
+    'username'  : 'Clément',
+    'email'     : 'clement@clem.fr',
+    'password'  : 'clement' //encrypted automatically
   });
-
-  var clem = Meteor.users.findOne(clemId);
 
   Bookmarks.insert({
     userId: clemId,
@@ -21,6 +21,20 @@ if (Bookmarks.find({}).count() === 0) {
     title: 'Le Monde',
     url: 'http://www.lemonde.fr',
     note: "Le news"
+  });
+
+  var jackId = Meteor.users.insert({
+    profile: { name: "Jack White" }
+  });
+
+  var jack = Meteor.users.findOne(jackId);
+
+  Bookmarks.insert({
+    userId: jackId,
+    created: now - 3 * 3600 * 1000,
+    title: 'Third Man Records',
+    url: 'http://thirdmanrecords.com/',
+    note: "Your turntable's not dead"
   });
 
 }
