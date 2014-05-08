@@ -23,6 +23,12 @@
 </template>
 
 <template name="bookmarkList">
+  {{#if justDeleted}}
+    <div class="alert alert-warning alert-dismissable pull-right">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Item deleted. <a id="undo-delete" class="alert-link">Undo?</a>
+    </div>
+  {{/if}}
   <h3>My Bookmarks</h3>
   <ul class="bookmark-list">
     {{#each bookmarks}}
@@ -33,7 +39,11 @@
 
 <template name="bookmarkItem">
   <li class="bookmark-item">
-    <div><a target='_blank' href="{{url}}">{{title}}</a></div>
+    <div>
+      <a target='_blank' href="{{url}}">{{title}}</a>
+      <a id="remove" class="btn btn-xs btn-default remove-bookmark pull-right"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+      <a id="edit" class="btn btn-xs btn-default remove-bookmark pull-right"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+    </div>
     {{#if note}}
       <div class="note">{{note}}</div>
     {{/if}}
@@ -47,7 +57,10 @@
 <template name="addNote">
   <p><b>Bookmark successfully created!</b></p>
   <p>
-    You can edit the title and add a note below.  <input type="button" class="btn btn-default btn-sm" id='dismiss' value="No thanks" />
+    You can edit the title and add a note below.
+    <button type="button" class="btn btn-default btn-xs" id='dismiss'>
+      <span class="glyphicon glyphicon-remove"></span> No, thanks
+    </button>
   </p>
 
   <form name="addNote" class="add-note-form">
@@ -57,7 +70,7 @@
     <div class="form-group">
       <textarea class="form-control" name="note" placeholder="Add a note for this bookmark..."></textarea>
     </div>
-    <button id="save" type="submit" class="form-control btn btn-primary">Save</button>
+    <button id="save" type="submit" class="form-control btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Save</button>
   </form>
 
 </template>

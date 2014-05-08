@@ -16,3 +16,12 @@ ul {
   font-style: italic;
   margin-left: 6px;
 }
+
+.alert-warning {
+  padding: 6px 30px 6px 10px;
+  margin: 14px 0 0 0;
+}
+.alert-warning a{
+  text-decoration: underline;
+  cursor: pointer;
+}

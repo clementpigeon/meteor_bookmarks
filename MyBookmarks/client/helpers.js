@@ -2,6 +2,7 @@ Meteor.subscribe('bookmarks', Meteor.userId());
 
 Template.main.rendered = function(){
   Session.set('newBookmarkId', null);
+  Session.get('justDeletedId', null);
 }
 
 Template.main.newBookmark = function () {
@@ -30,8 +31,28 @@ Template.bookmarkList.bookmarks = function () {
   return Bookmarks.find({}, {sort: {'created': -1}});
 };
 
+Template.bookmarkList.justDeleted = function () {
+  return !!Session.get('justDeletedId');
+};
+
+Template.bookmarkList.events({
+  'click #undo-delete': function (e) {
+    e.preventDefault();
+
+    Bookmarks.update(
+      {"_id": Session.get('justDeletedId')},
+      {
+        $set : {
+          "deleted": false
+        }
+      }
+    )
+    Session.set('justDeletedId', null);
+  }
+});
+
 Template.addNote.events({
-  'click input#dismiss': function (e) {
+  'click #dismiss': function (e) {
     e.preventDefault();
     Session.set('newBookmarkId', null);
   },
@@ -53,3 +74,18 @@ Template.addNote.events({
     Session.set('newBookmarkId', null);
   }
 });
+
+Template.bookmarkItem.events({
+  'click a#remove': function (e) {
+    e.preventDefault();
+    Bookmarks.update(
+      {"_id": this._id},
+      {
+        $set : {
+          "deleted": true
+        }
+      }
+    );
+    Session.set('justDeletedId', this._id);
+  },
+})
